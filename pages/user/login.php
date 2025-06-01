@@ -37,7 +37,6 @@ require_once '../../includes/init.php';
 </body>
 <script>
     function login() {
-
         let mail = document.getElementById('email').value;
         let pass = document.getElementById('password').value;
 
@@ -62,9 +61,19 @@ require_once '../../includes/init.php';
                         method: "POST",
                         data: data,
                         success: function(response) {
-                            alert("Login Successfully");
-                            window.location.href = '../../index.php';
-                            $('#email').val("");
+                            if(response.success){
+                                alert("Login Successfully");
+                                window.location.href = '../../index.php';
+                                $('#email').val("");
+                                $("#password").val("");
+                            }else{
+                                let text = "\nEntered Email And Password Are Invalid.\nWanna Register First?";
+                                if(confirm(text) == true){
+                                    window.location.href = "./registration.php";
+                                }else{
+                                    window.location.href = "./login.php";
+                                }
+                            }
                         },
                         error: function(error) {
                             alert("Not Logged In");
