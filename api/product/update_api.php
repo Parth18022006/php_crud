@@ -9,13 +9,12 @@ require_once "../../includes/init.php";
 $id = $_POST['id'] ?? null;
 $pro = $_POST['pro'] ?? null;
 $price= $_POST['price'] ?? null;
-$c_id= $_POST['c_id'] ?? null;
 
 
 if($id and $pro and $price){
 
-    $q = "UPDATE `product` SET `pname`=?,`price`=?,`cid`=? WHERE `pid`=?";
-    $param = [$pro,$price,$c_id,$id];
+    $q = "UPDATE `product` SET `pname`=?,`price`=?WHERE `pid`=?";
+    $param = [$pro,$price,$id];
 
     $stmt = $conn->prepare($q);
     $row = $stmt->execute($param);

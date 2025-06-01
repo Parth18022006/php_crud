@@ -48,7 +48,7 @@ $categories = $c_stmt->fetchAll(PDO::FETCH_ASSOC);
             <input type="hidden" name="id" id="id" value="<?= $pro['pid'] ?>">
             <input type="text" name="pro" id="pro" placeholder="Enter the product" value="<?= $pro['pname'] ?>">
             <input type="number" name="price" id="price" placeholder="Enter the price" value="<?= $pro['price'] ?>">
-            <select id="c_id">
+            <!-- <select id="c_id">
                 <?php
                 foreach ($categories as $cat) {
                 ?>
@@ -56,7 +56,7 @@ $categories = $c_stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php
                 }
                 ?>
-            </select>
+            </select> -->
             <input type="button" value="Update" onclick="updatepro()">
         </form>
 
@@ -70,8 +70,7 @@ $categories = $c_stmt->fetchAll(PDO::FETCH_ASSOC);
         let data = {
             id: $('#id').val(),
             pro: $('#pro').val(),
-            price: $('#price').val(),
-            c_id: $('#c_id').val()
+            price: $('#price').val()
         };
         $.ajax({
             url: "../../api/product/update_api.php",

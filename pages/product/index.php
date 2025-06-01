@@ -57,7 +57,6 @@ $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <th scope="col">Id</th>
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Category-Id</th>
                     <th scope="col">Category-Name</th>
                     <th scope="col">Update</th>
                     <th scope="col">Delete</th>
@@ -119,7 +118,6 @@ $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <td scope="col">${response.product[i].pid}</td>
                                     <td scope="col">${response.product[i].pname}</td>
                                     <td scope="col">${response.product[i].price}</td>
-                                    <td scope="col">${response.product[i].cid}</td>
                                     <td scope="col">${response.product[i].cname}</td>
                                     <td scope="col"><a href="./update_product.php?id=${response.product[i].pid}">Update</a></td>
                                     <td scope="col"><a href="" onclick="deletepro(${response.product[i].pid})">Delete</a></td>
