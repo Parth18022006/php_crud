@@ -67,7 +67,7 @@ require_once '../../includes/init.php';
                                 $('#email').val("");
                                 $("#password").val("");
                             }else{
-                                let text = "\nEntered Email And Passwords Are Invalid.\nWanna Register First?";
+                                let text = "\nEntered Email And Password Are Invalid.\nWanna Register First?";
                                 if(confirm(text) == true){
                                     window.location.href = "./registration.php";
                                 }else{
