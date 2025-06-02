@@ -19,3 +19,11 @@
 .text-white {
   color: white !important;
 }
+
+/* Main content shifts right to make space */
+.main-content {
+  margin-left: 250px;  /* Push content right to clear sidebar */
+  padding: 20px;
+  transition: margin-left 1s ease;  /* Smooth transition matching sidebar animation */
+}
+
