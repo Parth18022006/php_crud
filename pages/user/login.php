@@ -67,17 +67,15 @@ require_once '../../includes/init.php';
                                 $('#email').val("");
                                 $("#password").val("");
                             }else{
-                                let text = "\nEntered Email And Password Are Invalid.\nWanna Register First?";
-                                if(confirm(text) == true){
-                                    window.location.href = "./registration.php";
-                                }else{
-                                    window.location.href = "./login.php";
+                                if(response.reason === "email"){
+                                    document.getElementById('emsg1').innerHTML = "Incorrect E-Mail";
+                                }else if(response.reason === "password"){
+                                    document.getElementById('emsg2').innerHTML = "Incorrect Password";
                                 }
                             }
                         },
                         error: function(error) {
                             alert("Not Logged In");
-
                         }
                     });
 

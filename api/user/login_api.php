@@ -22,8 +22,21 @@ if($user){
     $_SESSION['user'] = $user['id'];
 }
 else{
-    echo json_encode(['success' => false]);
+    $q2 = "SELECT * FROM `user` WHERE `email` = ?";
+
+    $stmt2 = $conn->prepare($q2);
+    $stmt2->execute([$mail]);
+    $checkmail = $stmt2->fetch(PDO::FETCH_ASSOC);
+    
+    
+    if (!$checkmail) {
+        echo json_encode(['success' => false, 'reason' => 'email']);
+    } else {
+        echo json_encode(['success' => false, 'reason' => 'password']);
+    }
 }
+
+
 
 
 
