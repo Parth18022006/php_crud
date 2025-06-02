@@ -2,6 +2,13 @@
   min-height: 100vh;
   background-color: #007bff;
   padding-top: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+transform: translateX(-250px);
+  animation: slideInSidebar 1s forwards ease;
+  z-index: 1000;
 }
 
 .sidebar a {
@@ -10,6 +17,12 @@
   display: block;
   padding: 12px 20px;
   transition: background-color 0.2s ease;
+}
+
+@keyframes slideInSidebar {
+  to {
+    transform: translateX(0);
+  }
 }
 
 .sidebar a:hover {
