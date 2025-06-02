@@ -75,7 +75,7 @@ require_once '../../includes/init.php';
                             }
                         },
                         error: function(error) {
-                            alert("Not Logged In");
+                            alert("Not LoggedIn");
                         }
                     });
 
