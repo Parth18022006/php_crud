@@ -21,33 +21,36 @@ include pathof('includes/header.php');
     </div>
 
     <!-- Main Content -->
-    <div class="col-md-9 col-lg-10 px-4">
-        <form action="" method="post">
-            <br>
-            <input type="text" name="cat" id="cat" placeholder="Enter The CATEGORY">
-            <input type="button" value="Insert" onclick="insertcat()">
-        </form>
-        <br><br>
+    <div class="main-content">
 
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">Category-ID</th>
-                    <th scope="col">Category-Name</th>
-                    <th scope="col">Update</th>
-                    <th scope="col">Delete</th>
-                </tr>
-            </thead>
-            <tbody id="tbody">
+        <div class="col-md-9 col-lg-10 px-4">
+            <form action="" method="post">
+                <br>
+                <input type="text" name="cat" id="cat" placeholder="Enter The CATEGORY">
+                <input type="button" value="Insert" onclick="insertcat()">
+            </form>
+            <br><br>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Category-ID</th>
+                        <th scope="col">Category-Name</th>
+                        <th scope="col">Update</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
 
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
 
-        <p class="mt-3 text-center">
-            Wanna View?
-            <a href="<?= urlof('pages/product/index.php'); ?>" class="text-decoration-none text-primary fw-semibold">Product</a>
-        </p>
+            <p class="mt-3 text-center">
+                Wanna View?
+                <a href="<?= urlof('pages/product/index.php'); ?>" class="text-decoration-none text-primary fw-semibold">Product</a>
+            </p>
+        </div>
     </div>
 </div>
 

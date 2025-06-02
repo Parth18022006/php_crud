@@ -34,16 +34,17 @@ $cat = $stmt->fetch(PDO::FETCH_ASSOC);
         <a href="<?= urlof("./api/user/logout.php"); ?>">Logout</a>
     </div>
 
-    <div class="col-md-9 col-lg-10 px-4">
-        <br>
-        <h1>Update page</h1>
-        <form action="" method="post">
-            <input type="hidden" name="id" id="id" value="<?= $cat['c_id'] ?>">
-            <input type="text" name="cat" id="cat" placeholder="Enter The CATEGORY" value="<?= $cat['cname'] ?>">
-            <input type="button" value="Update" onclick="updatecat()">
-        </form>
-
-
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="col-md-9 col-lg-10 px-4">
+            <br>
+            <h1>Update page</h1>
+            <form action="" method="post">
+                <input type="hidden" name="id" id="id" value="<?= $cat['c_id'] ?>">
+                <input type="text" name="cat" id="cat" placeholder="Enter The CATEGORY" value="<?= $cat['cname'] ?>">
+                <input type="button" value="Update" onclick="updatecat()">
+            </form>
+        </div>
     </div>
 </div>
 

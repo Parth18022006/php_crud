@@ -39,16 +39,18 @@ $categories = $c_stmt->fetchAll(PDO::FETCH_ASSOC);
         <a href="<?= urlof("./api/user/logout.php"); ?>">Logout</a>
     </div>
 
-    <div class="col-md-9 col-lg-10 px-4">
-        <br>
-        <h1>Update page</h1>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="col-md-9 col-lg-10 px-4">
+            <br>
+            <h1>Update page</h1>
 
-        <form method="post">
+            <form method="post">
 
-            <input type="hidden" name="id" id="id" value="<?= $pro['pid'] ?>">
-            <input type="text" name="pro" id="pro" placeholder="Enter the product" value="<?= $pro['pname'] ?>">
-            <input type="number" name="price" id="price" placeholder="Enter the price" value="<?= $pro['price'] ?>">
-            <!-- <select id="c_id">
+                <input type="hidden" name="id" id="id" value="<?= $pro['pid'] ?>">
+                <input type="text" name="pro" id="pro" placeholder="Enter the product" value="<?= $pro['pname'] ?>">
+                <input type="number" name="price" id="price" placeholder="Enter the price" value="<?= $pro['price'] ?>">
+                <!-- <select id="c_id">
                 <?php
                 foreach ($categories as $cat) {
                 ?>
@@ -57,9 +59,10 @@ $categories = $c_stmt->fetchAll(PDO::FETCH_ASSOC);
                 }
                 ?>
             </select> -->
-            <input type="button" value="Update" onclick="updatepro()">
-        </form>
+                <input type="button" value="Update" onclick="updatepro()">
+            </form>
 
+        </div>
     </div>
 </div>
 
