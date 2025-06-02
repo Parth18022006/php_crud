@@ -76,6 +76,7 @@ require_once '../../includes/init.php';
                         },
                         error: function(error) {
                             alert("Not LoggedIn");
+                            window.location.href = "./login.php";
                         }
                     });
 
