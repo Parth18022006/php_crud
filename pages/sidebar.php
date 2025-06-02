@@ -5,5 +5,5 @@
   <a href="<?= urlof("./index.php"); ?>"> Index page</a>
   <a href="<?= urlof("./pages/category/index.php"); ?>">Category</a>
   <a href="<?= urlof("./pages/product/index.php"); ?>">Product</a>
-  <a h  ref="<?= urlof("./api/user/logout.php"); ?>">Logout</a>
+  <a href="<?= urlof("api/user/logout.php"); ?>">Logout</a>
 </div>
