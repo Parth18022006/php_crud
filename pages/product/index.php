@@ -13,10 +13,6 @@ $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-<head>
-    <link rel="stylesheet" href="<?= urlof('assets/css/sidebar.css'); ?>">
-    <link rel="stylesheet" href="<?= urlof('assets/css/common.css'); ?>">
-</head>
 <div class="row">
     <!-- Sidebar -->
     <div class="col-md-3 col-lg-2 sidebar d-flex flex-column align-items-start px-3">

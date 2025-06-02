@@ -3,11 +3,6 @@ require_once '../../includes/init.php';
 include pathof('includes/header.php');
 ?>
 
-
-<head>
-    <link rel="stylesheet" href="<?= urlof('assets/css/sidebar.css'); ?>">
-    <link rel="stylesheet" href="<?= urlof('assets/css/common.css'); ?>">
-</head>
 <div class="row">
     <!-- Sidebar -->
     <div class="col-md-3 col-lg-2 sidebar d-flex flex-column align-items-start px-3">
