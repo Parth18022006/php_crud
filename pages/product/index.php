@@ -25,15 +25,23 @@ include pathof('pages/sidebar.php');
         <label for="">Select Category :</label>
         <select name="" id="cid">
             <?php
-            foreach ($row as $r) {
-
-            ?>
-                <option value="<?= $r['c_id'] ?>">
+            if(count($row) > 0){
+                foreach ($row as $r) {
+                   ?> <option value="<?= $r['c_id'] ?>">
                     <?= $r['cname'] ?>
                 </option>
-            <?php
+                <?php
             }
+            }else{
+                ?>
+                <option value="">No Records</option>
+                <?php
+            }
+            
+
             ?>
+                
+            
         </select>
         <form method="post">
             <input type="text" name="pro" id="pro" placeholder="Enter the product">
