@@ -1,5 +1,5 @@
 <?php
-require_once '../../includes/init.php';
+require_once '../../../includes/init.php';
 include pathof('includes/header.php');
 
 $url = urlof('pages/category/index.php');
@@ -46,7 +46,7 @@ include pathof('pages/sidebar.php');
         }
 
         $.ajax({
-            url: "../../api/category/update_api.php",
+            url: "../../../api/category/update_api.php",
             method: "POST",
             data: data,
             success: function(response) {

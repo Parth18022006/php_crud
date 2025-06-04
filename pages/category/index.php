@@ -12,20 +12,21 @@ include pathof('includes/header.php');
     <div class="main-content">
 
         <div class="col-md-9 col-lg-10 px-4">
-            <form action="" method="post">
+            <!-- <form action="" method="post">
                 <br>
                 <input type="text" name="cat" id="cat" placeholder="Enter The CATEGORY">
                 <input type="button" value="Insert" onclick="insertcat()">
             </form>
-            <br><br>
-
+            <br><br> -->
+            
+            <a href="../Edit/Category/index.php" class="btn btn-primary">
+                <i class="bi bi-pencil-square"></i> Edit
+            </a>
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">Category-ID</th>
                         <th scope="col">Category-Name</th>
-                        <th scope="col">Update</th>
-                        <th scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody id="tbody">
@@ -44,25 +45,25 @@ include pathof('includes/header.php');
 <script>
     $(displaycat());
 
-    function insertcat() {
+    // function insertcat() {
 
-        let data = {
-            cat: $("#cat").val()
-        }
-        $.ajax({
-            url: "../../api/category/add_category.php",
-            method: "POST",
-            data: data,
-            success: function(response) {
-                alert("Category Added");
-                $('#cat').val("");
-                displaycat();
-            },
-            error: function(error) {
-                alert("Category Not Added");
-            }
-        });
-    }
+    //     let data = {
+    //         cat: $("#cat").val()
+    //     }
+    //     $.ajax({
+    //         url: "../../api/category/add_category.php",
+    //         method: "POST",
+    //         data: data,
+    //         success: function(response) {
+    //             alert("Category Added");
+    //             $('#cat').val("");
+    //             displaycat();
+    //         },
+    //         error: function(error) {
+    //             alert("Category Not Added");
+    //         }
+    //     });
+    // }
 
     function displaycat() {
         $.ajax({
@@ -79,13 +80,11 @@ include pathof('includes/header.php');
                             <tr>
                                 <td scope="col">${response.category[i].c_id}</td>
                                 <td scope="col">${response.category[i].cname}</td>
-                                <td scope="col"><a href="./update_category.php?id=${response.category[i].c_id}">Update</a></td>
-                                <td scope="col"><a href="" onclick="deletecat(${response.category[i].c_id})">Delete</a></td>
                             </tr>
                             `
                     }
                 } else {
-                    record += `<tr><td colspan = "4" style="text-align:center ;">No Records</td></tr>`
+                    record += `<tr><td colspan = "2" style="text-align:center ;">No Records</td></tr>`
                 }
                 $("#tbody").html(record);
             },
@@ -97,21 +96,21 @@ include pathof('includes/header.php');
 
     }
 
-    function deletecat(c_id) {
-        $.ajax({
-            url: "../../api/category/delete_api.php",
-            method: "POST",
-            data: {
-                c_id: c_id
-            },
-            success: function(response) {
-                displaycat();
-            },
-            error: function(error) {
-                alert("Category Not Deleted");
-            },
-        });
-    }
+    // function deletecat(c_id) {
+    //     $.ajax({
+    //         url: "../../api/category/delete_api.php",
+    //         method: "POST",
+    //         data: {
+    //             c_id: c_id
+    //         },
+    //         success: function(response) {
+    //             displaycat();
+    //         },
+    //         error: function(error) {
+    //             alert("Category Not Deleted");
+    //         },
+    //     });
+    // }
 </script>
 </body>
 
