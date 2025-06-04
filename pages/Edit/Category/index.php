@@ -5,7 +5,7 @@ include pathof('includes/header.php');
 
     <!-- Sidebar -->
     <?php
-    include pathof('pages/sidebar.php');
+    include pathof('includes/sidebar.php');
     ?>
      <div class="main-content">
 

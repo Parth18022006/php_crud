@@ -26,7 +26,7 @@ $categories = $c_stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <!-- Sidebar -->
 <?php
-include pathof('pages/sidebar.php');
+include pathof('includes/sidebar.php');
 ?>
 
 <!-- Main Content -->
