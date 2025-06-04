@@ -1,5 +1,5 @@
 <?php
-require_once '../../includes/init.php';
+require_once '../../../includes/init.php';
 include pathof('includes/header.php');
 
 $url = urlof('pages/product/index.php');
@@ -65,7 +65,7 @@ include pathof('pages/sidebar.php');
             price: $('#price').val()
         };
         $.ajax({
-            url: "../../api/product/update_api.php",
+            url: "../../../api/product/update_api.php",
             method: "POST",
             data: data,
             success: function(response) {

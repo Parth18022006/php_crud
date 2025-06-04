@@ -21,34 +21,10 @@ include pathof('pages/sidebar.php');
 <!-- Main Content -->
 <div class="main-content">
     <div class="col-md-9 col-lg-10 px-4">
-        <br>
-        <label for="">Select Category :</label>
-        <select name="" id="cid">
-            <?php
-            if(count($row) > 0){
-                foreach ($row as $r) {
-                   ?> <option value="<?= $r['c_id'] ?>">
-                    <?= $r['cname'] ?>
-                </option>
-                <?php
-            }
-            }else{
-                ?>
-                <option value="">No Records</option>
-                <?php
-            }
-            
 
-            ?>
-                
-            
-        </select>
-        <form method="post">
-            <input type="text" name="pro" id="pro" placeholder="Enter the product">
-            <input type="number" name="price" id="price" placeholder="Enter the price">
-            <input type="button" value="ADD" onclick="insertproduct();">
-        </form>
-        <br><br>
+        <a href="../Edit/Product/index.php" class="btn btn-primary">
+            <i class="bi bi-pencil-square"></i>
+        </a>
 
         <table class="table table-bordered">
             <thead>
@@ -57,8 +33,6 @@ include pathof('pages/sidebar.php');
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
                     <th scope="col">Category-Name</th>
-                    <th scope="col">Update</th>
-                    <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody id="tbody">
@@ -77,30 +51,6 @@ include pathof('pages/sidebar.php');
 <script>
     $(displaypro());
 
-    function insertproduct() {
-
-        let data = {
-            cid: $('#cid').val(),
-            pro: $('#pro').val(),
-            price: $('#price').val()
-        };
-        console.log(data);
-
-        $.ajax({
-            url: '../../api/product/add_product.php',
-            method: "POST",
-            data: data,
-            success: function(response) {
-                alert("Product Added Successfully");
-                displaypro();
-            },
-            error: function(error) {
-                alert("Product Not Added");
-            }
-
-        });
-    }
-
     function displaypro() {
 
         $.ajax({
@@ -118,13 +68,11 @@ include pathof('pages/sidebar.php');
                                     <td scope="col">${response.product[i].pname}</td>
                                     <td scope="col">${response.product[i].price}</td>
                                     <td scope="col">${response.product[i].cname}</td>
-                                    <td scope="col"><a href="./update_product.php?id=${response.product[i].pid}">Update</a></td>
-                                    <td scope="col"><a href="" onclick="deletepro(${response.product[i].pid})">Delete</a></td>
                                     </tr>
                                     `
                     }
                 } else {
-                    record += `<tr><td colspan = "6" style="text-align:center ;"> No Records</td></tr>`
+                    record += `<tr><td colspan = "4" style="text-align:center ;"> No Records</td></tr>`
                 }
 
                 $("#tbody").html(record);
@@ -140,24 +88,6 @@ include pathof('pages/sidebar.php');
 
     }
 
-    function deletepro(pid) {
-        $.ajax({
-            url: "../../api/product/delete_api.php",
-            method: "POST",
-            data: {
-                pid: pid
-            },
-            success: function(response) {
-                displaypro();
-            },
-            error: function(error) {
-                alert("Product Not Deleted");
-
-            }
-
-        });
-
-    }
 </script>
 </body>
 
