@@ -58,3 +58,10 @@ body {
     margin-top: 30px;
   }
   
+  .table th {
+    background-color:black !important;
+    color: white !important;
+    text-align: center;
+    padding: 12px;
+    font-weight: bold;
+  }
