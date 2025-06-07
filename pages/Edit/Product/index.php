@@ -143,6 +143,8 @@ include pathof('includes/sidebar.php');
     }
 
     function deletepro(pid) {
+        let text = "Sure? Want to delete";
+        if(confirm(text) == true){
         $.ajax({
             url: "../../../api/product/delete_api.php",
             method: "POST",
@@ -154,10 +156,11 @@ include pathof('includes/sidebar.php');
             },
             error: function(error) {
                 alert("Product Not Deleted");
-
             }
-
         });
+    }else{
+        window.location.href = "./index.php";
+    }
 
     }
 </script>

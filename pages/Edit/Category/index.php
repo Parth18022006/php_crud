@@ -97,7 +97,9 @@ function displaycat() {
     }
 
     function deletecat(c_id) {
-        $.ajax({
+        let text = "Sure? Want to delete";
+        if(confirm(text) == true){
+            $.ajax({
             url: "../../../api/category/delete_api.php",
             method: "POST",
             data: {
@@ -110,5 +112,9 @@ function displaycat() {
                 alert("Category Not Deleted");
             },
         });
+        }else{
+            window.location.href = "./index.php";
+        }
+        
     }
 </script>
