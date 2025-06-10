@@ -97,7 +97,7 @@ function displaycat() {
     }
 
     function deletecat(c_id) {
-        let text = "Sure? Want to delete";
+        let text = "Sure?You Want To Delete";
         if(confirm(text) == true){
             $.ajax({
             url: "../../../api/category/delete_api.php",

@@ -143,7 +143,7 @@ include pathof('includes/sidebar.php');
     }
 
     function deletepro(pid) {
-        let text = "Sure? Want to delete";
+        let text = "Sure?You Want To Delete";
         if(confirm(text) == true){
         $.ajax({
             url: "../../../api/product/delete_api.php",
