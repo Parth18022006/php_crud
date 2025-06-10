@@ -53,6 +53,7 @@ include pathof('includes/sidebar.php');
                 if (response.success != true) {
                     alert("Something Went Wrong");
                 } else {
+                    alert("Category Updated");
                     window.location.href = "./index.php"
                 }
 
