@@ -22,9 +22,12 @@ include pathof('includes/sidebar.php');
 <div class="main-content">
     <div class="col-md-9 col-lg-10 px-4">
 
+        <div style="margin-bottom: 10px;">
         <a href="../Edit/Product/index.php" class="btn btn-primary">
             <i class="bi bi-pencil-square"></i>
         </a>
+        </div>
+        
 
         <table class="table table-bordered">
             <thead>
