@@ -23,32 +23,32 @@ include pathof('includes/sidebar.php');
     <div class="col-md-9 col-lg-10 px-4">
         <br>
         <label for="">Select Category :</label>
-        <select name="" id="cid">
+        <select name="cid" id="cid">
             <?php
-            if(count($row) > 0){
+            if (count($row) > 0) {
                 foreach ($row as $r) {
-                   ?> <option value="<?= $r['c_id'] ?>">
-                    <?= $r['cname'] ?>
-                </option>
+            ?> <option value="<?= $r['c_id'] ?>">
+                        <?= $r['cname'] ?>
+                    </option>
                 <?php
-            }
-            }else{
+                }
+            } else {
                 ?>
                 <option value="">No Records</option>
-                <?php
+            <?php
             }
-            
+
 
             ?>
-                
-            
+
+
         </select>
         <form method="post">
             <input type="text" name="pro" id="pro" placeholder="Enter the product">
             <input type="number" name="price" id="price" placeholder="Enter the price">
             <input type="button" value="ADD" onclick="insertproduct();">
+            <div id="emsg" style="color: red;size: 6px;"></div>
         </form>
-        <br><br>
 
         <table class="table table-bordered">
             <thead>
@@ -79,28 +79,39 @@ include pathof('includes/sidebar.php');
 
     function insertproduct() {
 
-        let data = {
-            cid: $('#cid').val(),
-            pro: $('#pro').val(),
-            price: $('#price').val()
-        };
-        console.log(data);
+        let name = document.getElementById('pro').value;
+        let price = document.getElementById('price').value;
+        let cid = document.getElementById('cid').value;
 
-        $.ajax({
-            url: '../../../api/product/add_product.php',
-            method: "POST",
-            data: data,
-            success: function(response) {
-                alert("Product Added Successfully");
-                $('#pro').val("");
-                $('#price').val("");
-                displaypro();
-            },
-            error: function(error) {
-                alert("Product Not Added");
-            }
+        document.getElementById('emsg').innerHTML = "";
 
-        });
+        if (name != "" && name != null && price != "" && price != null && cid != "" && cid != null) {
+            let data = {
+                cid: $('#cid').val(),
+                pro: $('#pro').val(),
+                price: $('#price').val()
+            };
+
+            $.ajax({
+                url: '../../../api/product/add_product.php',
+                method: "POST",
+                data: data,
+                success: function(response) {
+                    alert("Product Added Successfully");
+                    $('#pro').val("");
+                    $('#price').val("");
+                    displaypro();
+                },
+                error: function(error) {
+                    alert("Product Not Added");
+                }
+
+            });
+        } else {
+            document.getElementById('emsg').innerHTML = "<br>Null Fields Are Not Allowed";
+        }
+
+
     }
 
     function displaypro() {
@@ -144,23 +155,23 @@ include pathof('includes/sidebar.php');
 
     function deletepro(pid) {
         let text = "Sure?You Want To Delete";
-        if(confirm(text) == true){
-        $.ajax({
-            url: "../../../api/product/delete_api.php",
-            method: "POST",
-            data: {
-                pid: pid
-            },
-            success: function(response) {
-                displaypro();
-            },
-            error: function(error) {
-                alert("Product Not Deleted");
-            }
-        });
-    }else{
-        window.location.href = "./index.php";
-    }
+        if (confirm(text) == true) {
+            $.ajax({
+                url: "../../../api/product/delete_api.php",
+                method: "POST",
+                data: {
+                    pid: pid
+                },
+                success: function(response) {
+                    displaypro();
+                },
+                error: function(error) {
+                    alert("Product Not Deleted");
+                }
+            });
+        } else {
+            window.location.href = "./index.php";
+        }
 
     }
 </script>

@@ -3,67 +3,77 @@ require_once '../../../includes/init.php';
 include pathof('includes/header.php');
 ?>
 
-    <!-- Sidebar -->
-    <?php
-    include pathof('includes/sidebar.php');
-    ?>
-     <div class="main-content">
+<!-- Sidebar -->
+<?php
+include pathof('includes/sidebar.php');
+?>
+<div class="main-content">
 
-<div class="col-md-9 col-lg-10 px-4">
-    <form action="" method="post">
-        <br>
-        <input type="text" name="cat" id="cat" placeholder="Enter The CATEGORY">
-        <input type="button" value="Insert" onclick="insertcat()">
-    </form>
-    <br><br>
+    <div class="col-md-9 col-lg-10 px-4">
+        <form action="" method="post">
+            <br>
+            <input type="text" name="cat" id="cat" placeholder="Enter The CATEGORY">
+            <input type="button" value="Insert" onclick="insertcat()">
+            <div id="emsg" style="color: red;size: 6px;"></div>
+        </form>
 
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th scope="col">Category-ID</th>
-                <th scope="col">Category-Name</th>
-                <th scope="col">Update</th>
-                <th scope="col">Delete</th>
-            </tr>
-        </thead>
-        <tbody id="tbody">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Category-ID</th>
+                    <th scope="col">Category-Name</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
 
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-    <p class="mt-3 text-center">
-        Wanna View?
-        <a href="<?= urlof('pages/product/index.php'); ?>" class="text-decoration-none text-primary fw-semibold">Product</a>
-    </p>
-</div>
+        <p class="mt-3 text-center">
+            Wanna View?
+            <a href="<?= urlof('pages/product/index.php'); ?>" class="text-decoration-none text-primary fw-semibold">Product</a>
+        </p>
+    </div>
 </div>
 
 <script>
-
     $(displaycat());
 
-function insertcat() {
+    function insertcat() {
 
-let data = {
-    cat: $("#cat").val()
-}
-$.ajax({
-    url: "../../../api/category/add_category.php",
-    method: "POST",
-    data: data,
-    success: function(response) {
-        alert("Category Added");
-        $('#cat').val("");
-        displaycat();
-    },
-    error: function(error) {
-        alert("Category Not Added");
+        let cat = document.getElementById('cat').value;
+
+        document.getElementById('emsg').innerHTML = "";
+
+        if (cat != "" && cat != null) {
+            let data = {
+                cat: $("#cat").val()
+            }
+            $.ajax({
+                url: "../../../api/category/add_category.php",
+                method: "POST",
+                data: data,
+                success: function(response) {
+                    alert("Category Added");
+                    $('#cat').val("");
+                    displaycat();
+                },
+                error: function(error) {
+                    alert("Category Not Added");
+                }
+            });
+
+        } else {
+            document.getElementById('emsg').innerHTML = "<br>Category Not Entered"
+        }
+
+
     }
-});
-}
 
-function displaycat() {
+    function displaycat() {
         $.ajax({
             url: "../../../api/category/display_api.php",
             method: "POST",
@@ -98,23 +108,23 @@ function displaycat() {
 
     function deletecat(c_id) {
         let text = "Sure?You Want To Delete";
-        if(confirm(text) == true){
+        if (confirm(text) == true) {
             $.ajax({
-            url: "../../../api/category/delete_api.php",
-            method: "POST",
-            data: {
-                c_id: c_id
-            },
-            success: function(response) {
-                displaycat();
-            },
-            error: function(error) {
-                alert("Category Not Deleted");
-            },
-        });
-        }else{
+                url: "../../../api/category/delete_api.php",
+                method: "POST",
+                data: {
+                    c_id: c_id
+                },
+                success: function(response) {
+                    displaycat();
+                },
+                error: function(error) {
+                    alert("Category Not Deleted");
+                },
+            });
+        } else {
             window.location.href = "./index.php";
         }
-        
+
     }
 </script>
