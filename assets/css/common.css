@@ -59,9 +59,24 @@ body {
   }
   
   .table th {
-    background-color:black !important;
+    background-color:#007bff !important;
     color: white !important;
     text-align: center;
     padding: 12px;
     font-weight: bold;
   }
+
+  /* Specific override for the Edit Category button */
+/* Green styling for all Edit buttons */
+a.btn.btn-primary[href*="/Edit/"] {
+  background-color: #32CD32;
+  color:white;
+  border: none;
+  width: 40px;
+}
+
+a.btn.btn-primary[href*="/Edit/"]:hover {
+  background-color: #66cc00;
+  color: black;
+}
+
