@@ -23,12 +23,22 @@
   display: block;
   border-radius: 4px;
   transition: background-color 0.3s, color 0.3s, padding-left 0.3s;
+  opacity: 0;
+  animation: fadeInLeft 0.4s ease forwards;
+  animation-delay: 0.2s;
 }
+
 
 .sidebar a:hover {
   background-color: #0056b3;
   color: white;
   padding-left: 20px; /* subtle slide effect on hover */
+}
+
+.sidebar a.logout:hover {
+  background-color: red !important;
+  color: white !important;
+  padding-left: 20px !important; /* keep hover effect consistent */
 }
 
 /* Sidebar heading */
@@ -62,12 +72,6 @@
   }
 }
 
-/* Optional fade-in animation for sidebar items */
-.sidebar a {
-  opacity: 0;
-  animation: fadeInLeft 0.4s ease forwards;
-  animation-delay: 0.2s;
-}
 
 @keyframes fadeInLeft {
   from {
@@ -79,3 +83,7 @@
     transform: translateX(0);
   }
 }
+
+
+
+
