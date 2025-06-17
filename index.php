@@ -12,8 +12,8 @@ include pathof('includes/sidebar.php');
 <div class="main-content">
   <div class="col-md-9 col-lg-10 content">
     <h1 class="mb-4">Dashboard</h1>
-    <a href="<?= urlof('pages/category/index.php'); ?>" class="btn btn-primary me-2">CATEGORY</a>
-    <a href="<?= urlof('pages/product/index.php'); ?>" class="btn btn-primary me-2">PRODUCT</a>
+    <a href="<?= urlof('pages/category/index.php'); ?>" class="btn btn-primary me-2" style="background-color: #007bff;">CATEGORY</a>
+    <a href="<?= urlof('pages/product/index.php'); ?>" class="btn btn-primary me-2"  style="background-color: #007bff;">PRODUCT</a>
   </div>
 </div>
 </body>
