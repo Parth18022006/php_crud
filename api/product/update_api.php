@@ -13,7 +13,7 @@ $price= $_POST['price'] ?? null;
 
 if($id and $pro and $price){
 
-    $q = "UPDATE `product` SET `pname`=?,`price`=?WHERE `pid`=?";
+    $q = "UPDATE `product` SET `pname`=?,`price`=? WHERE `pid`=?";
     $param = [$pro,$price,$id];
 
     $stmt = $conn->prepare($q);
