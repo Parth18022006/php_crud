@@ -50,6 +50,7 @@ include pathof('includes/sidebar.php');
                 ?>
             </select> -->
             <input type="button" value="Update" onclick="updatepro()">
+            <div id="emsg" style="color: red;size: 6px;"></div>
         </form>
 
     </div>
@@ -59,7 +60,18 @@ include pathof('includes/sidebar.php');
 
 <script>
     function updatepro() {
-        let data = {
+
+        let name = document.getElementById('pro').value;
+        let price = document.getElementById('price').value;
+
+        let ogname = <?= json_encode($pro['pname'])?>;
+        let ogpass = <?= json_encode($pro['price'])?>;
+
+        document.getElementById('emsg').innerHTML = "";
+
+        if(name != null && name !="" && price != "" && price != null){
+
+            let data = {
             id: $('#id').val(),
             pro: $('#pro').val(),
             price: $('#price').val()
@@ -69,7 +81,11 @@ include pathof('includes/sidebar.php');
             method: "POST",
             data: data,
             success: function(response) {
-                if (response.success != true) {
+                if(ogname == data.pro && ogpass == data.price){
+                    document.getElementById('emsg').innerHTML = "<br>Oops! Their Is No Change..";
+                    return false;
+                }
+                else if (response.success != true) {
                     alert("Something Went Wrong");
                 } else {
                     alert("Product Updated");
@@ -82,7 +98,9 @@ include pathof('includes/sidebar.php');
 
             }
         });
-
+        }else{
+            document.getElementById('emsg').innerHTML = "<br>Null Fields Are Not Allowed"
+        }
     }
 </script>
 
