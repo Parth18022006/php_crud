@@ -32,6 +32,7 @@ include pathof('includes/sidebar.php');
             <input type="hidden" name="id" id="id" value="<?= $cat['c_id'] ?>">
             <input type="text" name="cat" id="cat" placeholder="Enter The CATEGORY" value="<?= $cat['cname'] ?>">
             <input type="button" value="Update" onclick="updatecat()">
+            <div id="emsg" style="color: red;size: 6px;"></div>
         </form>
     </div>
 </div>
@@ -40,30 +41,41 @@ include pathof('includes/sidebar.php');
 <script>
     function updatecat(c_id) {
 
-        let data = {
-            id: $("#id").val(),
-            cat: $("#cat").val()
+        let name = document.getElementById('cat').value;
+        let ogname = <?= json_encode($cat['cname'])?>;
+
+        document.getElementById('cat').innerHTML = "";
+
+        if (name != null && name != "") {
+            let data = {
+                id: $("#id").val(),
+                cat: $("#cat").val()
+            }
+
+            $.ajax({
+                url: "../../../api/category/update_api.php",
+                method: "POST",
+                data: data,
+                success: function(response) {
+                    if(ogname == data.cat){
+                        document.getElementById('emsg').innerHTML = "<br>Oops! Their Is No Change..";
+                        return false;
+                    }
+                    else if (response.success != true) {
+                        alert("Something Went Wrong");
+                    } else {
+                        alert("Category Updated");
+                        window.location.href = "./index.php"
+                    }
+
+                },
+                error: function(error) {
+                    alert("Category Not Updated");
+                },
+            });
+        } else {
+            document.getElementById('emsg').innerHTML = "<br>Category Not Entered"
         }
-
-        $.ajax({
-            url: "../../../api/category/update_api.php",
-            method: "POST",
-            data: data,
-            success: function(response) {
-                if (response.success != true) {
-                    alert("Something Went Wrong");
-                } else {
-                    alert("Category Updated");
-                    window.location.href = "./index.php"
-                }
-
-            },
-            error: function(error) {
-                alert("Category Not Updated");
-            },
-        });
-
-
     }
 </script>
 
