@@ -1,41 +1,81 @@
+/* Sidebar base style */
 .sidebar {
-  min-height: 100vh;
+  height: 100vh;
   background-color: #007bff;
-  padding-top: 20px;
+  color: white;
   position: fixed;
   top: 0;
   left: 0;
-  width: 250px;
-  transform: translateX(-250px);
-  animation: slideInSidebar 1s forwards ease;
+  padding-top: 20px;
+  transition: transform 0.4s ease, opacity 0.3s ease;
   z-index: 1000;
+  width: 220px;
+  overflow-y: auto;
+  transform: translateX(0); /* Default visible */
 }
 
+/* Sidebar links */
 .sidebar a {
-  color: white;
+  color: #e2e6ea;
   text-decoration: none;
+  padding: 10px 15px;
+  width: 100%;
   display: block;
-  padding: 12px 20px;
-  transition: background-color 0.2s ease;
-}
-
-@keyframes slideInSidebar {
-  to {
-    transform: translateX(0);
-  }
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s, padding-left 0.3s;
 }
 
 .sidebar a:hover {
-  background-color: #495057;
+  background-color: #0056b3;
+  color: white;
+  padding-left: 20px; /* subtle slide effect on hover */
 }
 
-.text-white {
-  color: white !important;
+/* Sidebar heading */
+.sidebar h4 {
+  color: white;
+  margin-bottom: 1rem;
+  padding-left: 10px;
 }
 
+/* Main content to stay beside sidebar */
 .main-content {
-  margin-left: 250px;
+  margin-left: 220px;
   padding: 20px;
-  transition: margin-left 1s ease;
+  transition: margin-left 0.4s ease;
 }
 
+/* Responsive sidebar for smaller devices */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  .sidebar.show {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+}
+
+/* Optional fade-in animation for sidebar items */
+.sidebar a {
+  opacity: 0;
+  animation: fadeInLeft 0.4s ease forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
