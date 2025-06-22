@@ -65,6 +65,9 @@ body {
     padding: 12px;
     font-weight: bold;
   }
+  .table td{
+    text-align: center;
+  }
 
   /* Specific override for the Edit Category button */
 /* Green styling for all Edit buttons */
