@@ -13,6 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= urlof('assets/css/register.css');?>">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 
 </head>
@@ -32,7 +33,7 @@
         <small id="emsg3" style="color: red; text-align:center ;"></small>
         <br><small id="emsg" style="color: red; text-align:center ;"></small>
         <input type="button" value="Insert" onclick="register()">
-        <br>
+        <br><br>
         <p class="mt-3 text-center">
              Already registered? 
            <a href="./login.php" class="text-decoration-none text-primary fw-semibold">Login</a>
