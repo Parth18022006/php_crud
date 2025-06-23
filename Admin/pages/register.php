@@ -13,7 +13,7 @@ include pathof('includes/header.php');
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <form method="post">
-    <h2 class="text-center mb-4 text-gradient">Registration Form</h2>
+    <h2 class="text-center mb-4 text-gradient">Admin Registration Form</h2>
     <input type="email" name="mail" id="mail" placeholder="Enter The Mail">
     <small id="emsg1" style="color: red;"></small>
 
