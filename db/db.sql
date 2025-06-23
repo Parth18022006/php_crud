@@ -7,7 +7,8 @@ USE PRACTICE;
 CREATE TABLE `USER`(
     id int AUTO_INCREMENT PRIMARY KEY,
     email varchar(255) NOT NULL,
-    Password varchar(255) NOT NULL
+    Password varchar(255) NOT NULL,
+    Role ENUM('Admin','User') NOT NULL DEFAULT 'User'
 );
 
 CREATE TABLE category(
