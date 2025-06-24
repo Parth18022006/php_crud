@@ -1,145 +1,161 @@
 /* Background and layout */
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f0f2f5;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  
-    /* Subtle animated background */
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='8' height='8' x='26' y='26' fill='%23007bff' fill-opacity='0.04' rx='2'/%3E%3C/svg%3E");
-    background-size: 120px 120px;
-    animation: bgScroll 80s linear infinite;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  /* Updated professional background */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='86.6'%3E%3Cpolygon points='50,0 100,25 100,75 50,100 0,75 0,25' fill='none' stroke='%230056b3' stroke-width='1' stroke-opacity='0.2'/%3E%3C/svg%3E");
+  background-size: 100px 86.6px;
+  animation: pageIn 0.5s ease-in forwards, bgScroll 25s linear infinite;
+  opacity: 0;
+}
+
+/* Login form */
+form {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  animation: fadeUp 0.6s ease-out, scaleIn 0.5s ease-out;
+  overflow: visible;
+  line-height: 1.5;
+}
+
+/* Heading */
+h2 {
+  font-family: 'DM Sans', sans-serif;
+  margin-bottom: 25px;
+  font-size: 24px;
+  background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.4;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+/* Input fields */
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 15px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  line-height: 1.4;
+  box-sizing: border-box;
+  color: #333;
+  transition: 0.3s ease;
+  vertical-align: middle;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+  background-color: #fff;
+  outline: none;
+}
+
+/* Login button */
+input[type="button"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+input[type="button"]:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+/* Error messages */
+small#emsg,
+small#emsg1,
+small#emsg2 {
+  display: block;
+  margin-top: -6px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: red;
+}
+
+/* Bottom paragraph and link */
+p.mt-3.text-center {
+  margin-top: 15px;
+  text-align: center;
+  color: #333;
+}
+
+p.mt-3.text-center a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 600;
+}
+
+p.mt-3.text-center a:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+/* Animations */
+@keyframes bgScroll {
+  from {
+    background-position: 0 0;
   }
-  
-  /* Login form */
-  form {
-    background-color: #ffffff;
-    padding: 30px 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    width: 100%;
-    max-width: 380px;
-    text-align: center;
-    animation: fadeUp 0.6s ease-out;
-    overflow: visible;
-    line-height: 1.5;
+  to {
+    background-position: 240px 240px;
   }
-  
-  /* Heading */
-  h2 {
-    margin-bottom: 25px;
-    font-size: 24px;
-    background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  
-    /* ✅ Fix for cut-off descenders */
-    line-height: 1.4;
-    padding-top: 4px;
-    padding-bottom: 4px;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
   }
-  
-  /* Input fields */
-  input[type="email"],
-  input[type="password"] {
-    width: 100%;
-    padding: 12px 14px;
-    margin-bottom: 15px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 15px;
-    line-height: 1.4;
-    box-sizing: border-box;
-    color: #333;
-    transition: 0.3s ease;
-    vertical-align: middle;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  input[type="email"]:focus,
-  input[type="password"]:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
-    background-color: #fff;
-    outline: none;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
   }
-  
-  /* Login button */
-  input[type="button"] {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    font-size: 15px;
-    font-weight: bold;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.3s ease;
+  to {
+    transform: scale(1);
   }
-  
-  input[type="button"]:hover {
-    background-color: #0056b3;
-    transform: translateY(-1px);
+}
+
+@keyframes pageIn {
+  to {
+    opacity: 1;
   }
-  
-  /* Error messages */
-  small#emsg,
-  small#emsg1,
-  small#emsg2 {
-    display: block;
-    margin-top: -6px;
-    margin-bottom: 10px;
-    font-size: 13px;
-    color: red;
-  }
-  
-  /* Bottom paragraph and link */
-  p.mt-3.text-center {
-    margin-top: 15px;
-    text-align: center;
-    color: #333;
-  }
-  
-  p.mt-3.text-center a {
-    text-decoration: none;
-    color: #007bff;
-    font-weight: 600;
-  }
-  
-  p.mt-3.text-center a:hover {
-    text-decoration: underline;
-    color: #0056b3;
-  }
-  
-  /* Animations */
-  @keyframes bgScroll {
-    from {
-      background-position: 0 0;
-    }
-    to {
-      background-position: 240px 240px;
-    }
-  }
-  
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(25px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Font smoothing for crisp text */
-  * {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
+}
+
+/* Font smoothing */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
