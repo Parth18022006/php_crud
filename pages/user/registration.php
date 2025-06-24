@@ -24,7 +24,7 @@
     <form method="post">
         <h2 class="text-center mb-4 text-gradient">Registration Form</h2>
         <input type="email" name="mail" id="mail" placeholder="Enter The Mail">
-        <small id="emsg1" style="color: red;"></small>
+        <small id="emsg1" style="color: red; text-align:center ;"></small>
 
         <input type="password" name="pass" id="pass" placeholder="Enter The Password">
         <small id="emsg2" style="color: red; text-align:center ;"></small>
