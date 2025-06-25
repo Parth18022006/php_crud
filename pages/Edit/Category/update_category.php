@@ -2,7 +2,7 @@
 require_once '../../../includes/init.php';
 include pathof('includes/header.php');
 
-$url = urlof('pages/category/index.php');
+$url = urlof('pages/category/index');
 if (!isset($_GET['id'])) {
     header("Location: $url");
 }
@@ -53,7 +53,7 @@ include pathof('includes/sidebar.php');
             }
 
             $.ajax({
-                url: "../../../api/category/update_api.php",
+                url: "../../../api/category/update_api",
                 method: "POST",
                 data: data,
                 success: function(response) {
@@ -65,7 +65,7 @@ include pathof('includes/sidebar.php');
                         alert("Something Went Wrong");
                     } else {
                         alert("Category Updated");
-                        window.location.href = "./index.php"
+                        window.location.href = "./index"
                     }
 
                 },

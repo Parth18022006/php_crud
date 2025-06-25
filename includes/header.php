@@ -1,5 +1,5 @@
 <?php
-    $url = urlof('pages/user/login.php');
+    $url = urlof('pages/user/login');
     if(!isset($_SESSION['loggedIn'])){
         header("Location: $url");
         exit;

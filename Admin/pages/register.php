@@ -61,12 +61,12 @@ include pathof('includes/header.php');
                         }
 
                         $.ajax({
-                            url:"../api/register_api.php",
+                            url:"../api/register_api",
                             method:"POST",
                             data:data,
                             success:function(response){
-                                alert("Admin Registered Successfully");
-                                window.location.href = "../../index.php";
+                                alert(user + "" + " Registered Successfully");
+                                window.location.href = "../../index";
                             },
                             error:function(error){
                                 alert("Admin Not Registered");

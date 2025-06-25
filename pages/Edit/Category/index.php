@@ -34,7 +34,7 @@ include pathof('includes/sidebar.php');
 
         <p class="mt-3 text-center">
             Wanna View?
-            <a href="<?= urlof('pages/Edit/Product/index.php'); ?>" class="text-decoration-none text-primary fw-semibold">Product</a>
+            <a href="<?= urlof('pages/Edit/Product/index'); ?>" class="text-decoration-none text-primary fw-semibold">Product</a>
         </p>
     </div>
 </div>
@@ -53,7 +53,7 @@ include pathof('includes/sidebar.php');
                 cat: $("#cat").val()
             }
             $.ajax({
-                url: "../../../api/category/add_category.php",
+                url: "../../../api/category/add_category",
                 method: "POST",
                 data: data,
                 success: function(response) {
@@ -75,7 +75,7 @@ include pathof('includes/sidebar.php');
 
     function displaycat() {
         $.ajax({
-            url: "../../../api/category/display_api.php",
+            url: "../../../api/category/display_api",
             method: "POST",
             success: function(response) {
                 let record = "";
@@ -88,7 +88,7 @@ include pathof('includes/sidebar.php');
                             <tr>
                                 <td scope="col">${response.category[i].c_id}</td>
                                 <td scope="col">${response.category[i].cname}</td>
-                                <td scope="col"><a href="./update_category.php?id=${response.category[i].c_id}">Update</a></td>
+                                <td scope="col"><a href="./update_category?id=${response.category[i].c_id}">Update</a></td>
                                 <td scope="col"><a href="" onclick="deletecat(${response.category[i].c_id})">Delete</a></td>
                             </tr>
                             `
@@ -110,7 +110,7 @@ include pathof('includes/sidebar.php');
         let text = "Sure?You Want To Delete";
         if (confirm(text) == true) {
             $.ajax({
-                url: "../../../api/category/delete_api.php",
+                url: "../../../api/category/delete_api",
                 method: "POST",
                 data: {
                     c_id: c_id
@@ -123,7 +123,7 @@ include pathof('includes/sidebar.php');
                 },
             });
         } else {
-            window.location.href = "./index.php";
+            window.location.href = "./index";
         }
 
     }

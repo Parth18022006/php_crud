@@ -36,7 +36,7 @@
         <br><br>
         <p class="mt-3 text-center">
              Already registered? 
-           <a href="./login.php" class="text-decoration-none text-primary fw-semibold">Login</a>
+           <a href="./login" class="text-decoration-none text-primary fw-semibold">Login</a>
         </p>
 
     </form>
@@ -66,12 +66,12 @@
                             };
 
                             $.ajax({
-                                url: "../../api/user/register_api.php",
+                                url: "../../api/user/register_api",
                                 method: "POST",
                                 data: data,
                                 success: function(response) {
                                     alert("Registration Done Successfully");
-                                    window.location.href = "./login.php";
+                                    window.location.href = "./login";
                                 },
                                 error: function(error) {
                                     alert("Not Registered");

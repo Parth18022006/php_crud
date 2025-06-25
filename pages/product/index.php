@@ -23,7 +23,7 @@ include pathof('includes/sidebar.php');
     <div class="col-md-9 col-lg-10 px-4">
 
         <div style="margin-bottom: 10px;">
-        <a href="../Edit/Product/index.php" class="btn btn-primary">
+        <a href="../Edit/Product/index" class="btn btn-primary">
             <i class="bi bi-pencil-square"></i>
         </a>
         </div>
@@ -57,7 +57,7 @@ include pathof('includes/sidebar.php');
     function displaypro() {
 
         $.ajax({
-            url: "../../api/product/display_api.php",
+            url: "../../api/product/display_api",
             method: "POST",
             success: function(response) {
                 let record = "";

@@ -31,8 +31,8 @@ require_once '../../includes/init.php';
         <small id="emsg" style="color: red; text-align:center ;"></small>
         <input type="button" value="Login" onclick="login();">
         <p class="mt-3 text-center">
-            Have you Registerd?
-            <a href="./registration.php" class="text-decoration-none text-primary fw-semibold">Register</a>
+            Have you Registered?
+            <a href="./registration" class="text-decoration-none text-primary fw-semibold">Register</a>
         </p>
     </form>
 
@@ -59,13 +59,13 @@ require_once '../../includes/init.php';
                     }
                     console.log(data);
                     $.ajax({
-                        url: "../../api/user/login_api.php",
+                        url: "../../api/user/login_api",
                         method: "POST",
                         data: data,
                         success: function(response) {
                             if(response.success){
                                 alert("Login Successfully");
-                                window.location.href = '../../index.php';
+                                window.location.href = '../../index';
                                 $('#email').val("");
                                 $("#password").val("");
                             }else{
@@ -78,7 +78,7 @@ require_once '../../includes/init.php';
                         },
                         error: function(error) {
                             alert("Not LoggedIn");
-                            window.location.href = "./login.php";
+                            window.location.href = "./login";
                         }
                     });
 

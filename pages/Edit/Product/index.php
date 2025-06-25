@@ -93,7 +93,7 @@ include pathof('includes/sidebar.php');
             };
 
             $.ajax({
-                url: '../../../api/product/add_product.php',
+                url: '../../../api/product/add_product',
                 method: "POST",
                 data: data,
                 success: function(response) {
@@ -117,7 +117,7 @@ include pathof('includes/sidebar.php');
     function displaypro() {
 
         $.ajax({
-            url: "../../../api/product/display_api.php",
+            url: "../../../api/product/display_api",
             method: "POST",
             success: function(response) {
                 let record = "";
@@ -131,7 +131,7 @@ include pathof('includes/sidebar.php');
                                     <td scope="col">${response.product[i].pname}</td>
                                     <td scope="col">${response.product[i].price}</td>
                                     <td scope="col">${response.product[i].cname}</td>
-                                    <td scope="col"><a href="./update_product.php?id=${response.product[i].pid}">Update</a></td>
+                                    <td scope="col"><a href="./update_product?id=${response.product[i].pid}">Update</a></td>
                                     <td scope="col"><a href="" onclick="deletepro(${response.product[i].pid})">Delete</a></td>
                                     </tr>
                                     `
@@ -157,7 +157,7 @@ include pathof('includes/sidebar.php');
         let text = "Sure?You Want To Delete";
         if (confirm(text) == true) {
             $.ajax({
-                url: "../../../api/product/delete_api.php",
+                url: "../../../api/product/delete_api",
                 method: "POST",
                 data: {
                     pid: pid
@@ -170,7 +170,7 @@ include pathof('includes/sidebar.php');
                 }
             });
         } else {
-            window.location.href = "./index.php";
+            window.location.href = "./index";
         }
 
     }

@@ -13,7 +13,7 @@ include pathof('includes/sidebar.php');
     <div class="col-md-9 col-lg-10 px-4">
 
         <div style="margin-bottom: 10px;">
-            <a href="../Edit/Category/index.php" class="btn btn-primary">
+            <a href="../Edit/Category/index" class="btn btn-primary">
                 <i class="bi bi-pencil-square"></i>
             </a>
         </div>
@@ -33,7 +33,7 @@ include pathof('includes/sidebar.php');
 
         <p class="mt-3 text-center">
             Wanna View?
-            <a href="<?= urlof('pages/product/index.php'); ?>" class="text-decoration-none text-primary fw-semibold">Product</a>
+            <a href="<?= urlof('pages/product/index'); ?>" class="text-decoration-none text-primary fw-semibold">Product</a>
         </p>
     </div>
 </div>
@@ -43,7 +43,7 @@ include pathof('includes/sidebar.php');
 
     function displaycat() {
         $.ajax({
-            url: "../../api/category/display_api.php",
+            url: "../../api/category/display_api",
             method: "POST",
             success: function(response) {
                 let record = "";
