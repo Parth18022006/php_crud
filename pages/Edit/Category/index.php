@@ -34,7 +34,7 @@ include pathof('includes/sidebar.php');
 
         <p class="mt-3 text-center">
             Wanna View?
-            <a href="<?= urlof('pages/product/index.php'); ?>" class="text-decoration-none text-primary fw-semibold">Product</a>
+            <a href="<?= urlof('pages/Edit/Product/index.php'); ?>" class="text-decoration-none text-primary fw-semibold">Product</a>
         </p>
     </div>
 </div>
