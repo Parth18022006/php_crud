@@ -69,7 +69,7 @@ include pathof('includes/header.php');
                                 window.location.href = "../../index";
                             },
                             error:function(error){
-                                alert("Admin Not Registered");
+                                alert(user + "" +" Not Registered");
                             }
                         })
                     }else{
