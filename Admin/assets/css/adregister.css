@@ -22,6 +22,7 @@ body {
 
 /* ───────── Form Container ───────── */
 form {
+  /* original styles… */
   width: 100%;
   max-width: 360px;
   background-color: rgba(255, 255, 255, 0.85);
@@ -31,6 +32,11 @@ form {
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   animation: fadeUp 0.6s ease-out, scaleIn 0.5s ease-out;
+
+  /* new: lock the vertical rhythm */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;             /* ← controls spacing between fields */
 }
 
 /* ───────── Heading ───────── */
@@ -39,26 +45,30 @@ form h2 {
   text-align: center;
   font-size: 24px;
   color: #007bff;
-  margin-bottom: 25px;
+  margin: 0 0 13px;      /* 12 px gap + 1 px tweak for optical balance */
 }
 
 /* ───────── Inputs & Select ───────── */
-form input[type="email"],
-form input[type="password"],
+/* one rule for every text‑like field (email / password / text after toggle) */
+form input:not([type="button"]),
 form select {
   width: 100%;
   padding: 12px 14px;
-  margin: 12px 0;
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 14px;
   color: #333;
-  transition: border 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth), background-color 0.25s ease;
+  box-sizing: border-box;      /* keep height stable */
+  transition:
+    border         .3s var(--ease-smooth),
+    box-shadow     .3s var(--ease-smooth),
+    background     .25s ease;
+  margin: 0;                   /* spacing handled by form gap */
 }
 
 /* Focus state */
-form input:focus,
+form input:not([type="button"]):focus,
 form select:focus {
   border-color: #007bff;
   box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
@@ -74,7 +84,7 @@ form select {
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='1 1 6 6 11 1'/%3E%3C/svg%3E")
     no-repeat right 1rem center / 12px 8px,
     #f9f9f9;
-  transition: background-position 0.35s ease, background-size 0.35s ease, background-color 0.25s ease;
+  transition: background-position .35s ease, background-size .35s ease, background-color .25s ease;
 }
 
 form select:focus {
@@ -82,15 +92,12 @@ form select:focus {
   background-size: 0 0, auto;
 }
 
-form select::-ms-expand {
-  display: none;
-}
+form select::-ms-expand { display: none; }
 
 /* ───────── Submit Button ───────── */
 form input[type="button"] {
   width: 100%;
   padding: 12px;
-  margin-top: 20px;
   font-size: 15px;
   font-weight: bold;
   background-color: #007bff;
@@ -98,7 +105,7 @@ form input[type="button"] {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color .3s ease, transform .2s ease;
 }
 
 form input[type="button"]:hover {
@@ -106,6 +113,7 @@ form input[type="button"]:hover {
   transform: translateY(-1px);
 }
 
+/* ───────── Password Field & Eye Icon ───────── */
 .password-field {
   position: relative;
 }
@@ -116,21 +124,16 @@ form input[type="button"]:hover {
   right: 12px;
   transform: translateY(-50%);
   cursor: pointer;
-  /* ▼ updated */
-  font-size: 1.7rem;  /* bigger eye (adjust to taste) */
-  color: #000 !important;      /* black by default */
+  font-size: 1.7rem;
+  color: #000 !important;
   transition: color .25s;
   opacity: 1;
 }
 
-.password-field .toggle-pass:hover {
-  color: #007bff !important;
-}
+.password-field .toggle-pass:hover { color: #007bff !important; }
 
-.password-field input[type="password"] {
-  padding-right: 44px;   /* icon ≈ 20 px wide + comfortable gap */
-  box-sizing: border-box; /* keeps total width unchanged */
-}
+/* keep icon room in both “password” & “text” states */
+.password-field input { padding-right: 44px; }
 
 /* ───────── Error Message ───────── */
 form small {
@@ -138,44 +141,14 @@ form small {
   color: red;
   font-size: 13px;
   margin-top: -6px;
-  margin-bottom: 8px;
+  margin-bottom: -6px;  /* so the total +12 px from gap remains */
 }
 
 /* ───────── Animations ───────── */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    transform: scale(0.95);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-
-@keyframes pageIn {
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes bgScroll {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 240px 240px;
-  }
-}
+@keyframes fadeUp { from{opacity:0;transform:translateY(25px)} to{opacity:1;transform:none} }
+@keyframes scaleIn { from{transform:scale(.95)} to{transform:none} }
+@keyframes pageIn { to{opacity:1} }
+@keyframes bgScroll { from{background-position:0 0} to{background-position:240px 240px} }
 
 /* ───────── Responsive ───────── */
 @media (max-width: 768px) {
@@ -183,7 +156,6 @@ form small {
     padding-left: 0;
     justify-content: center;
   }
-
   form {
     margin: 20px;
     max-width: 90%;

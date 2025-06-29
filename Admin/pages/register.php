@@ -38,7 +38,6 @@ include pathof('includes/header.php');
 
     <small id="emsg" style="color: red; text-align:center ;"></small>
     <input type="button" value="Register" onclick="register()">
-    <br>
 </form>
 
 <script>
