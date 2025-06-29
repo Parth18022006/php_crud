@@ -13,6 +13,7 @@ require_once '../../includes/init.php';
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= urlof('assets/css/newl.css');?>">
+    <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
 
@@ -24,10 +25,12 @@ require_once '../../includes/init.php';
         <h2 class="text-center mb-4 text-theme">Login Form</h2>
         <input type="email" name="email" id="email" placeholder="Enter the Email">
         <small id="emsg1" style="color: red; text-align:center ;"></small>
-
+        
+        <div class="password-field">
         <input type="password" name="password" id="password" placeholder="Enter the Password">
         <small id="emsg2" style="color: red; text-align:center ;"></small>
-
+        <i class="fa-solid fa-eye toggle-pass" data-target="password" aria-hidden="true"></i>
+        </div>
         <small id="emsg" style="color: red; text-align:center ;"></small>
         <input type="button" value="Login" onclick="login();">
         <p class="mt-3 text-center">
@@ -99,6 +102,16 @@ require_once '../../includes/init.php';
 
 
     }
+
+    document.querySelectorAll('.toggle-pass').forEach(icon => {
+    icon.addEventListener('click', () => {
+      const input = document.getElementById(icon.dataset.target);
+      const show = input.type === 'password';
+      input.type = show ? 'text' : 'password';
+      icon.classList.toggle('fa-eye', !show);
+      icon.classList.toggle('fa-eye-slash', show);
+    });
+  });
 </script>
 
 </html>
