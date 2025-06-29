@@ -106,6 +106,32 @@ form input[type="button"]:hover {
   transform: translateY(-1px);
 }
 
+.password-field {
+  position: relative;
+}
+
+.password-field .toggle-pass {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  /* ▼ updated */
+  font-size: 1.7rem;  /* bigger eye (adjust to taste) */
+  color: #000 !important;      /* black by default */
+  transition: color .25s;
+  opacity: 1;
+}
+
+.password-field .toggle-pass:hover {
+  color: #007bff !important;
+}
+
+.password-field input[type="password"] {
+  padding-right: 44px;   /* icon ≈ 20 px wide + comfortable gap */
+  box-sizing: border-box; /* keeps total width unchanged */
+}
+
 /* ───────── Error Message ───────── */
 form small {
   display: block;

@@ -10,17 +10,25 @@ include pathof('includes/header.php');
         
 <head>
     <link rel="stylesheet" href="<?= urlof('Admin/assets/css/adregister.css')?>">
+    <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 </head>
 <form method="post">
     <h2 class="text-center mb-4 text-gradient">Admin Registration Form</h2>
     <input type="email" name="mail" id="mail" placeholder="Enter The Mail">
     <small id="emsg1" style="color: red; text-align:center ;"></small>
 
+    <div class="password-field">
     <input type="password" name="pass" id="pass" placeholder="Enter The Password">
+    <i class="fa-solid fa-eye toggle-pass" data-target="pass" aria-hidden="true"></i>
+    </div>
     <small id="emsg2" style="color: red; text-align:center ;"></small>
 
+    <div class="password-field">
     <input type="password" name="cpass" id="cpass" placeholder="Enter The Confirm Password">
+    <i class="fa-solid fa-eye toggle-pass" data-target="cpass" aria-hidden="true"></i>
+    </div>
     <small id="emsg3" style="color: red; text-align:center ;"></small>
 
     <select name="role" id="role">
@@ -90,6 +98,17 @@ include pathof('includes/header.php');
         }
 
     }
+
+    /* ④ the tiny JS toggle (put after the field or in a separate JS file) */
+    document.querySelectorAll('.toggle-pass').forEach(icon => {
+    icon.addEventListener('click', () => {
+      const input = document.getElementById(icon.dataset.target);
+      const show = input.type === 'password';
+      input.type = show ? 'text' : 'password';
+      icon.classList.toggle('fa-eye', !show);
+      icon.classList.toggle('fa-eye-slash', show);
+    });
+  });
 </script>
 </body>
 </html>
