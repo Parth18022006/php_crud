@@ -41,6 +41,7 @@ form h2 {
 /* Inputs and Dropdown */
 form input[type="email"],
 form input[type="password"],
+form input[type="text"],  
 form select {
   width: 100%;
   padding: 12px 14px;
@@ -51,6 +52,8 @@ form select {
   font-size: 14px;
   transition: border 0.3s ease, box-shadow 0.3s ease;
   color: #333;
+
+  box-sizing: border-box;  
 }
 
 /* Focus state */
@@ -76,6 +79,30 @@ form input[type="button"] {
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
+/* Eye icon inside input field (only this added section) */
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  padding-right: 44px; /* Space for eye icon */
+}
+
+.password-field .toggle-pass {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color:#000 !important;      /* black by default */
+  cursor: pointer;
+}
+
+.password-field .toggle-pass:hover {
+  color: #007bff !important;
+}
+
 
 form input[type="button"]:hover {
   background-color: #0056b3;
