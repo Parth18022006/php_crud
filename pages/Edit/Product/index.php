@@ -86,27 +86,34 @@ include pathof('includes/sidebar.php');
         document.getElementById('emsg').innerHTML = "";
 
         if (name != "" && name != null && price != "" && price != null && cid != "" && cid != null) {
-            let data = {
-                cid: $('#cid').val(),
-                pro: $('#pro').val(),
-                price: $('#price').val()
-            };
 
-            $.ajax({
-                url: '../../../api/product/add_product',
-                method: "POST",
-                data: data,
-                success: function(response) {
-                    alert("Product Added Successfully");
-                    $('#pro').val("");
-                    $('#price').val("");
-                    displaypro();
-                },
-                error: function(error) {
-                    alert("Product Not Added");
-                }
+            if (price <= 0) {
+                alert("Enter Valid Price.");
+                $('#price').val("");
+                return;
+            } else {
+                let data = {
+                    cid: $('#cid').val(),
+                    pro: $('#pro').val(),
+                    price: $('#price').val()
+                };
 
-            });
+                $.ajax({
+                    url: '../../../api/product/add_product',
+                    method: "POST",
+                    data: data,
+                    success: function(response) {
+                        alert("Product Added Successfully");
+                        $('#pro').val("");
+                        $('#price').val("");
+                        displaypro();
+                    },
+                    error: function(error) {
+                        alert("Product Not Added");
+                    }
+
+                });
+            }
         } else {
             document.getElementById('emsg').innerHTML = "<br>Null Fields Are Not Allowed";
         }
