@@ -5,5 +5,5 @@
   <a href="<?= urlof("./index"); ?>">Dashboard</a>
   <a href="<?= urlof("./pages/category/index"); ?>">Category</a>
   <a href="<?= urlof("./pages/product/index"); ?>">Product</a>
-  <a href="<?= urlof("api/user/logout"); ?>" class="logout">Logout</a>
+  <a href="<?= urlof("./api/user/logout"); ?>" class="logout" onclick="return confirm('Sure! You Want To Logout.');">Logout</a>
 </div>
