@@ -32,6 +32,7 @@ include pathof('includes/header.php');
     <small id="emsg3" style="color: red; text-align:center ;"></small>
 
     <select name="role" id="role">
+        <option value="" disabled selected hidden>Select role</option>
         <option value="Admin">Admin</option>
         <option value="User">User</option>
     </select>
@@ -108,6 +109,24 @@ include pathof('includes/header.php');
       icon.classList.toggle('fa-eye-slash', show);
     });
   });
+
+  const roleSel = document.getElementById('role');
+
+/* list is about to open → hide arrow */
+roleSel.addEventListener('mousedown', () => {
+  roleSel.classList.add('is-open');
+});
+
+/* list just closed *and* the value changed → show arrow */
+roleSel.addEventListener('change', () => {
+  roleSel.classList.remove('is-open');
+});
+
+/* user pressed Esc or clicked elsewhere without changing value → show arrow */
+roleSel.addEventListener('blur', () => {
+  roleSel.classList.remove('is-open');
+});
+
 </script>
 </body>
 </html>

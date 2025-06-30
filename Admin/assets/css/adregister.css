@@ -76,19 +76,36 @@ form select:focus {
   background-color: #fff;
 }
 
-/* ───────── Animated Chevron for <select> ───────── */
-form select {
-  appearance: none;
-  padding-right: 2.5rem;
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='1 1 6 6 11 1'/%3E%3C/svg%3E")
-    no-repeat right 1rem center / 12px 8px,
-    #f9f9f9;
-  transition: background-position .35s ease, background-size .35s ease, background-color .25s ease;
+/* grey text only for the placeholder line */
+select option[disabled] {
+  color: #888;
 }
 
-form select:focus {
-  background-position: left -2rem center, 0 0;
+
+
+
+/* ───────── Animated Chevron for <select> ───────── */
+form select {
+  /* keep everything you already set … */
+  appearance: none;
+  padding-right: 2.5rem;
+
+  /* ① Re‑declare the arrow so we can animate it */
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='1 1 6 6 11 1'/%3E%3C/svg%3E")
+      no-repeat right 1rem center / 12px 8px,
+    #f9f9f9;                 /* the normal field background */
+
+  /* ② Smooth motion */
+  transition:
+    background-position .35s var(--ease-smooth),
+    background-size     .35s var(--ease-smooth);
+}
+
+/* ③ When the dropdown is open (select has focus) */
+
+form select.is-open {
+  background-position: left -1.5rem center, 0 0;
   background-size: 0 0, auto;
 }
 
