@@ -64,41 +64,46 @@ include pathof('includes/sidebar.php');
         let name = document.getElementById('pro').value;
         let price = document.getElementById('price').value;
 
-        let ogname = <?= json_encode($pro['pname'])?>;
-        let ogpass = <?= json_encode($pro['price'])?>;
+        let ogname = <?= json_encode($pro['pname']) ?>;
+        let ogpass = <?= json_encode($pro['price']) ?>;
 
         document.getElementById('emsg').innerHTML = "";
 
-        if(name != null && name !="" && price != "" && price != null){
+        if (name != null && name != "" && price != "" && price != null) {
 
-            let data = {
-            id: $('#id').val(),
-            pro: $('#pro').val(),
-            price: $('#price').val()
-        };
-        $.ajax({
-            url: "../../../api/product/update_api",
-            method: "POST",
-            data: data,
-            success: function(response) {
-                if(ogname == data.pro && ogpass == data.price){
-                    document.getElementById('emsg').innerHTML = "<br>Oops! Their Is No Change..";
-                    return false;
-                }
-                else if (response.success != true) {
-                    alert("Something Went Wrong");
-                } else {
-                    alert("Product Updated");
-                    window.location.href = "./index";
-                }
+            if (price <= 0) {
+                alert("Enter Valid Price.");
+                $('#price').val("");
+                return;
+            } else {
+                let data = {
+                    id: $('#id').val(),
+                    pro: $('#pro').val(),
+                    price: $('#price').val()
+                };
+                $.ajax({
+                    url: "../../../api/product/update_api",
+                    method: "POST",
+                    data: data,
+                    success: function(response) {
+                        if (ogname == data.pro && ogpass == data.price) {
+                            document.getElementById('emsg').innerHTML = "<br>Oops! Their Is No Change..";
+                            return false;
+                        } else if (response.success != true) {
+                            alert("Something Went Wrong");
+                        } else {
+                            alert("Product Updated");
+                            window.location.href = "./index";
+                        }
 
-            },
-            error: function(error) {
-                alert("Product Not Updated");
+                    },
+                    error: function(error) {
+                        alert("Product Not Updated");
 
+                    }
+                });
             }
-        });
-        }else{
+        } else {
             document.getElementById('emsg').innerHTML = "<br>Null Fields Are Not Allowed"
         }
     }
