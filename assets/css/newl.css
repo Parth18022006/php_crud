@@ -81,19 +81,21 @@
   /* 4a. Password wrapper & eye icon */
   .password-field {
     position: relative;
+    margin-bottom: 15px;     
   }
   
   .password-field input {
     padding-right: 52px !important; /* reserve space for icon */
+    margin-bottom: 0;    
   }
   
   .password-field .toggle-pass {
     position: absolute;
-    top: 41%;
     right: 14px;
-    transform: translateY(-56%);
+    top: 15px;             /* steady value ≈ (input‑padding‑top) */
+    /* no % + translateY needed */
     font-size: 1.7rem;
-    color: #000 !important;
+    color: #000;
     cursor: pointer;
     line-height: 1;
     transition: color .25s;
@@ -128,10 +130,9 @@
   small#emsg1,
   small#emsg2 {
     display: block;
-    margin-top: -6px;
-    margin-bottom: 10px;
+    margin: 4px 0 0;
     font-size: 13px;
-    color: red;
+    color: red;    
   }
   
   /* 7. Bottom paragraph & link */
