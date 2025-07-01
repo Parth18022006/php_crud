@@ -73,7 +73,7 @@ require_once '../../includes/init.php';
                                 $("#password").val("");
                             }else{
                                 if(response.reason === "email"){
-                                    document.getElementById('emsg1').innerHTML = "Incorrect E-Mail";
+                                    document.getElementById('emsg1').innerHTML = "User With This E-mail Not Registered";
                                 }else if(response.reason === "password"){
                                     document.getElementById('emsg2').innerHTML = "Incorrect Password";
                                 }
