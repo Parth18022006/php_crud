@@ -1,6 +1,6 @@
-/* ─────────────────────────────────────────────────────────
-   LOGIN PAGE  •  polished styling + fixed password toggle
-   ─────────────────────────────────────────────────────────*/
+/* ──────────────────────────────────────────────────────────────────────────
+   LOGIN PAGE  •  polished styling + fixed password toggle (cleaned)
+   ─────────────────────────────────────────────────────────────────────────*/
 
 /* 1. Background & layout
    ------------------------------------------------------ */
@@ -47,17 +47,22 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     line-height: 1.4;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding: 4px 0;
   }
   
-  /* 4. Input fields  – EMAIL + (PASSWORD or TEXT after toggle)
+  /* 4. Input fields – EMAIL + PASSWORD
      ------------------------------------------------------ */
+  input[type="email"],
+  .password-field {
+    width: 100%;
+    margin-bottom: 15px; /* increased vertical spacing */
+  }
+  
   .password-field input,
   input[type="email"] {
     width: 100%;
     padding: 12px 14px;
-    margin-bottom: 15px;
+    padding-right: 52px; /* reserve space for eye icon */
     background-color: #f9f9f9;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -69,7 +74,6 @@
     vertical-align: middle;
   }
   
-  /* focus styles */
   .password-field input:focus,
   input[type="email"]:focus {
     border-color: #007bff;
@@ -81,19 +85,12 @@
   /* 4a. Password wrapper & eye icon */
   .password-field {
     position: relative;
-    margin-bottom: 15px;     
-  }
-  
-  .password-field input {
-    padding-right: 52px !important; /* reserve space for icon */
-    margin-bottom: 0;    
   }
   
   .password-field .toggle-pass {
     position: absolute;
     right: 14px;
-    top: 15px;             /* steady value ≈ (input‑padding‑top) */
-    /* no % + translateY needed */
+    top: 15px; /* steady value ≈ (input‑padding‑top) */
     font-size: 1.7rem;
     color: #000;
     cursor: pointer;
@@ -102,7 +99,7 @@
   }
   
   .password-field .toggle-pass:hover {
-    color: #007bff !important;
+    color: #007bff;
   }
   
   /* 5. Login button */
@@ -132,7 +129,7 @@
     display: block;
     margin: 4px 0 0;
     font-size: 13px;
-    color: red;    
+    color: red;
   }
   
   /* 7. Bottom paragraph & link */
