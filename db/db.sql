@@ -6,7 +6,7 @@ USE PRACTICE;
 
 CREATE TABLE `USER`(
     id int AUTO_INCREMENT PRIMARY KEY,
-    email varchar(255) NOT NULL,
+    email varchar(255) NOT NULL UNIQUE,
     Password varchar(255) NOT NULL,
     Role ENUM('Admin','User') NOT NULL DEFAULT 'User'
 );
