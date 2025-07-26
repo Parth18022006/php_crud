@@ -11,7 +11,7 @@ CREATE TABLE `USER`(
     Role ENUM('Admin','User') NOT NULL DEFAULT 'User'
 );
 
-INSERT INTO `crud_user` (`id`, `email`, `Password`, `Role`) VALUES (NULL, 'admin@gmail.com', '12345', 'Admin');
+INSERT INTO `user` (`id`, `email`, `Password`, `Role`) VALUES (NULL, 'admin@gmail.com', '12345', 'Admin');
 
 CREATE TABLE category(
     c_id int AUTO_INCREMENT PRIMARY KEY,
