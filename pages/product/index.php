@@ -32,7 +32,7 @@ include pathof('includes/sidebar.php');
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th scope="col">Id</th>
+                    <th scope="col">Ids</th>
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
                     <th scope="col">Category-Name</th>
